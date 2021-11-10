@@ -8,7 +8,7 @@ import {
 } from '../components/InfoSection/Data'
 import Navbar from '../components/Navbar'
 import Services from '../components/Services'
-import Sidebar from '../components/Sidebar'
+import Sidebar from '../components/HeroSection/Sidebar'
 
 const Home = () => {
   const [isOpen, setIsOpen] = useState(false)
