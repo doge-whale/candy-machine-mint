@@ -14,6 +14,12 @@ import {
   getSolletExtensionWallet,
 } from "@solana/wallet-adapter-wallets";
 
+import Page from './pages';
+import {
+  BrowserRouter as Router,
+} from "react-router-dom";
+
+
 import {
   ConnectionProvider,
   WalletProvider,
@@ -69,36 +75,10 @@ const theme = createTheme({
 });
 
 const App = () => {
-  const endpoint = useMemo(() => clusterApiUrl(network), []);
-
-  const wallets = useMemo(
-    () => [
-        getPhantomWallet(),
-        getSlopeWallet(),
-        getSolflareWallet(),
-        getSolletWallet({ network }),
-        getSolletExtensionWallet({ network })
-    ],
-    []
-  );
-
   return (
-      <ThemeProvider theme={theme}>
-        <ConnectionProvider endpoint={endpoint}>
-          <WalletProvider wallets={wallets} autoConnect={true}>
-            <WalletDialogProvider>
-              <Home
-                candyMachineId={candyMachineId}
-                config={config}
-                connection={connection}
-                startDate={startDateSeed}
-                treasury={treasury}
-                txTimeout={txTimeout}
-              />
-            </WalletDialogProvider>
-          </WalletProvider>
-        </ConnectionProvider>
-      </ThemeProvider>
+        <Router>
+        <Page />
+        </Router>
   );
 };
 
